@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PaysController!{% endblock %}
+
+{% block body %}
+    <h1>Pays</h1>
+
+    {% if pays is not empty %}
+    <table border="1" class="table">
+        <pre>{{dump(pays)}}</pre>
+        
+        <tbody>
+            {% for un_pays in pays %}
+            <tr>
+                <td>
+                <a href="{{ path('pays', {'id': un_pays.id})}}">
+                {{un_pays}}            
+                </td>
+                <td>{{un_pays.drapeau}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    
+    </table>
+{% else %}
+    <p> Il n'y a pas de pays </p>
+{% endif %}
+
+
+    <h2>Ajout un pais</h2>
+    {{form(ajout)}}
+
+{# cette page doit contenir :
+ - les pays stockes en DB: affiche nom + drapeau
+
+ elle doit permettre : 
+ - d'ajout un pays + upload drapeau
+ - supprimer un pays + son drapeau de la DB
+ - d'accéder à une page d'édition, pour modif un pays
+ #}
+{% endblock %}

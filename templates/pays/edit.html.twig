@@ -1,0 +1,14 @@
+{% extends 'base.html.twig'%}
+
+{% block body %}
+
+    <h1>{{pays.nom}}</h1>
+    {% if pays.drapeau is not null %}
+        <img src="{{asset('/uploads/' ~ pays.drapeau) }}">
+    {% endif %}
+
+    <h2>Modif le pays</h2>
+    {{form(edit)}}
+
+{% endblock %}
+
